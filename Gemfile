@@ -50,3 +50,4 @@ gem 'simple_form'
 
 gem 'devise', '~> 3.4.0'
 gem 'cancan'
+gem 'paperclip'
