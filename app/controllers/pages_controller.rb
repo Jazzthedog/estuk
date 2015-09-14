@@ -11,4 +11,8 @@ class PagesController < ApplicationController
   def dashboard
     @books = current_user.books
   end
+
+  def home_gallery
+    @books = current_user.books
+  end
 end
