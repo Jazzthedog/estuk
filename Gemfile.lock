@@ -11,6 +11,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.3.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -222,6 +223,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  aasm
   aws-sdk (< 2.0)
   byebug
   cancan
