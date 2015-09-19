@@ -5,7 +5,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.where(availability: true)
+    if params[:search]
+      @books = Book.search(params[:search]).where(availability: true).order("created_at DESC")
+    else
+      @books = Book.where(availability: true)
+    end
   end
 
   # GET /books/1

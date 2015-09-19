@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
 
   belongs_to :user
   has_many :sales  
-  has_attached_file :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   has_attached_file :resource
 
   validates_attachment_content_type :image, 
@@ -18,4 +18,13 @@ class Book < ActiveRecord::Base
   validates :image, attachment_presence: true
   validates :resource, attachment_presence: true  
   validates_numericality_of :price, greater_than: 49, message: "must be atleast 50 cents"
+
+  def self.search(search)
+    if search
+      where(['name LIKE ? or description LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      all
+    end
+  end
+
 end
