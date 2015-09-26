@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :books
+  resources :books do
+    resources :comments
+  end
 
   devise_for :users
   #get 'pages/home'
