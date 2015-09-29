@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
       #@book = Book.find(params[:book_id])
       #@book = Book.find_by!(slug: params[:slug])
       @comment = @book.comments.create(comments_params)
+      CommentMailer.comment_created(current_user,@book.user,@comment.content).deliver
       redirect_to book_path(@book)
   end
 
