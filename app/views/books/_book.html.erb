@@ -8,5 +8,20 @@
         <p><strong><%= link_to book.name, book_path(book) %></strong></p>
         <p><%= "%.2f" % (book.price.to_f / 100) %></p>
       </div>
-    </div>
+      <div class="caption" style="text-align:left;">
+        <%= link_to like_book_path(book),  class: "like", method: :put do %>
+           <button type="button" class="btn btn-info" aria-label="Left Align">
+             <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+             <span class="badge"><%= book.get_upvotes.size %></span>
+           </button>
+        <% end %> 
+
+        <%= link_to unlike_book_path(book), class: "like", method: :put do %>
+          <button type="button" class="btn btn-info" aria-label="Left Align"> 
+           <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+           <span class="badge"><%= book.get_downvotes.size %></span>
+          </button>  
+        <% end %>
+      </div>       
+    </div>   
   </div>

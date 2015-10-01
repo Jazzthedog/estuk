@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   resources :books do
     resources :comments
+    member do
+      put "like" => "books#upvote"
+      put "unlike" => "books#downvote"
+    end
   end
 
   devise_for :users

@@ -2,6 +2,8 @@ class Book < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  acts_as_votable
+  
   belongs_to :user
   has_many :sales  
   has_many :comments

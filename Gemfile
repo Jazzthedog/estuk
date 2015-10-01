@@ -69,3 +69,4 @@ group :production do
 end
 
 gem 'rails_admin'
+gem 'acts_as_votable', '~> 0.10.0'
