@@ -5,8 +5,13 @@ class Book < ActiveRecord::Base
   acts_as_votable
   
   belongs_to :user
-  has_many :sales  
-  has_many :comments
+  has_many   :sales  
+  has_many   :comments
+
+  # Favorited by users
+  has_many   :favorite_books # just the 'relationships'
+  has_many   :favorited_by, through: :favorite_books, source: :user # the actual users favoriting a book
+ 
   has_attached_file :image, styles: { medium: "300x300#", thumb: "100x100>" }
   has_attached_file :resource
 

@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :books
   acts_as_voter
+
+  # Favorite books of user
+  has_many :favorite_books # just the relationship aspect
+  has_many :favorites, :through => :favorite_books, :source => :book 
+  # the actual books a user favorites
 end
