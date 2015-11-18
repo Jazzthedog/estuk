@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20151109043430) do
     t.string   "author"
     t.text     "description"
     t.integer  "price"
-    t.boolean  "availability"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "availability",            default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
