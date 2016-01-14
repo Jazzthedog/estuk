@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :favorite]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :upvote, :downvote, :favorite]
 
   # GET /books
   # GET /books.json
@@ -81,6 +81,29 @@ class BooksController < ApplicationController
     @book.downvote_from current_user
     redirect_to book_path
   end
+
+  # Add and remove favorite books
+  # for current_user
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @book
+      redirect_to :back, notice: "You favorited #{@book.name}"
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@book)
+      redirect_to :back, notice: "Unfavorited #{@book.name}"
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  rescue 
+    #flash[:error] = "Unable to Favorite this title"
+    redirect_to :back, notice: "Cannot Favorite this title, it's already Favorited!"
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

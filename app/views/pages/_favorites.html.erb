@@ -1,0 +1,22 @@
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Available</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.id %></td>
+        <td><%= link_to favorite.name, book_path(favorite) %></td>
+        <td><%= favorite.description %></td>
+        <td><%= favorite.availability %></td>
+        <td><%= image_tag favorite.image.url(:thumb), class: "img-responsive" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>

@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     @books = current_user.books
     @purchased = Sale.where(buyer_email: current_user.email)
     @sales = Sale.where(seller_email: current_user.email)
+    @favorites = current_user.favorites
   end
 
   def home_gallery
